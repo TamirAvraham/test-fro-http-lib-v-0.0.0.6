@@ -4,7 +4,7 @@
 #include<string>
 #include<set>
 #include<vector>
-
+#include "HtmlFileReader.h"
 #include "HttpParser.h"
 #include "HttpStatus.h"
 #include "JsonObject.h"
@@ -31,6 +31,8 @@ namespace http {
 		void serve();
 		HttpServer(int port, std::string ip);
 		void HandleRoute(http::HttpRequestType,HttpRoute);
+		void ServeHtmlPage(const std::string& routeName, HtmlFileReader& htmlFileReader);
+		void ServeHtmlPage(const std::string&& routeName, HtmlFileReader& htmlFileReader);
 
 
 		class HttpContext {

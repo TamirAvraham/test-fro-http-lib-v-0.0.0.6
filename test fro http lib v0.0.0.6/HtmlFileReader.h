@@ -1,6 +1,6 @@
 #pragma once
 #include "FileReader.h"
-#include "HttpServer.h"
+#include <vector>
 /*
 * TODO:
 * implemnt joning to file css and js connected to the html file.
@@ -18,7 +18,7 @@ namespace http{
 		bool connectFiles()noexcept;
 		bool connectFile(const std::string& fileName)noexcept;
 		bool writeToFile(const std::string& htmlMarkup,bool head)noexcept;
-		bool addAsRouteToHttpServer(const http::HttpServer& server)const noexcept;
+		
 
 
 		/// <summary>
@@ -41,7 +41,7 @@ namespace http{
 		std::vector<ConnectedFileInfo> getConnectedFilesInfo()const;
 		bool DoesFileExist(const std::string& fname)const;
 		std::string getFileHtml(const ConnectedFileInfo& finfo)const;
-		std::string getFileAsRoute()const;
+		
 		
 	};
 }

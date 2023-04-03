@@ -22,6 +22,9 @@
     <Filter Include="Header Files\sqlite headers">
       <UniqueIdentifier>{7837f8cd-97ef-4166-98ca-8014cab66d08}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\website stuff">
+      <UniqueIdentifier>{7c6550fc-bfb3-4b3e-bcf6-a14ce29587c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -137,5 +140,26 @@
     <ClInclude Include="CreateDogHandlerFunc.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="home_page.htm">
+      <Filter>Source Files\website stuff</Filter>
+    </None>
+    <None Include="main.js">
+      <Filter>Source Files\website stuff</Filter>
+    </None>
+    <None Include="style.css">
+      <Filter>Source Files\website stuff</Filter>
+    </None>
+    <None Include="add_dog.html">
+      <Filter>Source Files\website stuff</Filter>
+    </None>
+    <None Include="add_dog.js">
+      <Filter>Source Files\website stuff</Filter>
+    </None>
+    <None Include="dog_details.html">
+      <Filter>Source Files\website stuff</Filter>
+    </None>
+    <None Include="script.js" />
   </ItemGroup>
 </Project>

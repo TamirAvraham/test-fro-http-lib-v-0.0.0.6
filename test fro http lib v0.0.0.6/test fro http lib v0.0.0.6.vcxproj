@@ -168,6 +168,17 @@
     <ClInclude Include="ThreadPool.h" />
     <ClInclude Include="ThreadSafeQueue.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="add_dog.html" />
+    <None Include="add_dog.js" />
+    <None Include="dog_details.html" />
+    <None Include="home_page.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="main.js" />
+    <None Include="script.js" />
+    <None Include="style.css" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

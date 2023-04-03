@@ -32,16 +32,7 @@ bool http::HtmlFileReader::connectFiles() noexcept
 void http::HtmlFileReader::optimizeFileForSending() noexcept
 {
     connectFiles();
-    std::remove_if(_currentFileReadOut.begin(), _currentFileReadOut.end(), [](char c)->bool {
-        switch (c)
-        {
-        case '\n':
-        case '\t':
-            return true;
-        default:
-            return false;
-        }
-    });
+
 }
 
 std::vector<http::HtmlFileReader::ConnectedFileInfo> http::HtmlFileReader::getConnectedFilesInfo() const

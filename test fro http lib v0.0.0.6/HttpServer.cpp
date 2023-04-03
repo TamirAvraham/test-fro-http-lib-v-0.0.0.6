@@ -96,7 +96,7 @@ void http::HttpServer::serve()
         ConnHandler();
     }
 }
-http::HttpServer::HttpServer(int port, std::string ip):tcp::TcpServer(port,ip),_threadPool(50)
+http::HttpServer::HttpServer(int port, std::string ip):tcp::TcpServer(port,ip),_threadPool(10)
 {
 }
 void http::HttpServer::HandleRoute(http::HttpRequestType type, HttpRoute route)
@@ -107,6 +107,19 @@ void http::HttpServer::HandleRoute(http::HttpRequestType type, HttpRoute route)
         _routes.insert({ type,{} });
     }
     _routes.at(type).push_back(route);
+}
+void http::HttpServer::ServeHtmlPage(const std::string& routeName, HtmlFileReader& htmlFileReader)
+{
+    _routes.at(http::HttpGET).push_back({ routeName,[&htmlFileReader](HttpContext context) {
+        context.sendHtml(HttpStatus::OK,htmlFileReader);
+} });
+}
+void http::HttpServer::ServeHtmlPage(const std::string&& routeName, HtmlFileReader& htmlFileReader)
+{
+    _routes.at(http::HttpGET).push_back({ routeName,[&htmlFileReader](HttpContext context) {
+        context.sendHtml(HttpStatus::OK,htmlFileReader);
+        }
+    });
 }
 void http::HttpServer::ConnHandler()
 {

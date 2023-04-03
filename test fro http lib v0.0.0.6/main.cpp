@@ -30,10 +30,21 @@ int main() {
 	http::HttpRoute createDogRoute({ "/api/create" }, { CreateDogHandlerFunc });
 	http::HttpRoute getDogRoute({ "/api/get_dog/:id" }, { getDogHandlerFunc });
 	http::HttpRoute getAllDogsRoute({ "/api/get_all_dogs" }, { getAllDogsHandlerFunc });
+	http::HtmlFileReader homePageReader("home_page.htm");
+	http::HtmlFileReader addDogReader("add_dog.html");
+	http::HtmlFileReader dogDeatsReader("dog_details.html");
+
+	homePageReader.optimizeFileForSending();
+	addDogReader.optimizeFileForSending();
+	dogDeatsReader.optimizeFileForSending();
+
 	http::HttpServer server(8080,"127.0.0.1");
 	server.HandleRoute(http::HttpPOST, createDogRoute);
 	server.HandleRoute(http::HttpGET, getDogRoute);
 	server.HandleRoute(http::HttpGET, getAllDogsRoute);
+	server.ServeHtmlPage("/", homePageReader);
+	server.ServeHtmlPage("/dog_details/:id", dogDeatsReader);
+	server.ServeHtmlPage("/add_dog", addDogReader);
 	server.serve();
 
 

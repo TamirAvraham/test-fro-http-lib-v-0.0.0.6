@@ -1,0 +1,21 @@
+.dog-card {
+    width: 300px;
+    height: 400px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    display: inline-block;
+}
+
+    .dog-card img {
+        width: 100%;
+        height: 60%;
+        object-fit: cover;
+    }
+
+    .dog-card h3 {
+        margin: 10px;
+    }
+
+    .dog-card p {
+        margin: 10px;
+    }
