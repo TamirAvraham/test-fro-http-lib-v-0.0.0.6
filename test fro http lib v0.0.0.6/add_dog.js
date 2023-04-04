@@ -1,29 +1,42 @@
-// Submit the form data to the API
-const submitForm = document.querySelector('form');
-submitForm.addEventListener('submit', (event) => {
+function submitDog(event) {
     event.preventDefault();
 
-    const name = document.querySelector('#name').value;
-    const breed = document.querySelector('#breed').value;
-    const age = document.querySelector('#age').value;
-    const gender = document.querySelector('#gender').value;
+    const nameInput = document.getElementById("name");
+    const breedInput = document.getElementById("breed");
+    const ageInput = document.getElementById("age");
+    const genderSelect = document.getElementById("gender");
 
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('breed', breed);
-    formData.append('age', age);
-    formData.append('gender', gender);
+    const dog = {
+        name: nameInput.value,
+        breed: breedInput.value,
+        age: parseInt(ageInput.value),
+        gender: genderSelect.value,
+        
+    };
 
-    fetch('/api/create', {
-        method: 'POST',
-        body: formData
+    fetch("/api/create", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dog)
     })
-        .then(response => response.json())
-        .then(data => {
-            // Redirect to the dog detail page for the new dog
-            window.location.href = `/dog.html?id=${data.id}`;
+        .then(response => {
+            if (response.ok) {
+                alert("Dog submitted successfully!");
+                nameInput.value = "";
+                breedInput.value = "";
+                ageInput.value = "";
+                genderSelect.value = "";
+            } else {
+                alert("Failed to submit dog.");
+            }
         })
         .catch(error => {
             console.error(error);
+            alert("Failed to submit dog.");
         });
-});
+}
+
+const submitForm = document.querySelector("form");
+submitForm.addEventListener("submit", submitDog);

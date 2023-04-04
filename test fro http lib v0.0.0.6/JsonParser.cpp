@@ -100,7 +100,7 @@ std::pair<std::string, int> http::json::JsonParser::GetLineValue(std::string jso
         {
             return { returnString,returnNumber };
         }
-        returnString = jsonObject.substr(startOfvalue, endOfValue-2);
+        returnString = jsonObject.substr(startOfvalue, endOfValue-1);
         break;
     default:
 
@@ -121,7 +121,7 @@ std::pair<std::string, int> http::json::JsonParser::GetLineValue(std::string jso
             else
                 return { returnString,returnNumber };
         }
-        returnString = jsonObject.substr(startOfvalue - 1 , endOfValue - 1);
+        returnString = jsonObject.substr(startOfvalue - 1 , endOfValue);
         break;
     }
     auto next_value = jsonObject.find('\"', endOfValue + 1);

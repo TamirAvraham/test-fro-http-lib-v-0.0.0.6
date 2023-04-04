@@ -160,11 +160,13 @@
     <None Include="dog_details.html">
       <Filter>Source Files\website stuff</Filter>
     </None>
-    <None Include="script.js" />
     <None Include="Error404.html">
       <Filter>Source Files\website stuff</Filter>
     </None>
     <None Include="Error400.html">
+      <Filter>Source Files\website stuff</Filter>
+    </None>
+    <None Include="script.js">
       <Filter>Source Files\website stuff</Filter>
     </None>
   </ItemGroup>

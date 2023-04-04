@@ -6,11 +6,10 @@ void CreateDogHandlerFunc(http::HttpContext& context)
 	{
 		auto bodyJson = context.GetBodyAsJson();
 		const std::string name = bodyJson["name"].string_value();
-		const std::string bread = bodyJson["bread"].string_value();
-		const std::string pathToPicture = bodyJson["path_to_picture"].string_value();
+		const std::string bread = bodyJson["breed"].string_value();
 		const char gender = bodyJson["gender"].string_value()[0];
 		const int age = bodyJson["age"].integer_value();
-		auto ret = Dog::New(age, gender, name, bread, pathToPicture).toJson();
+		auto ret = Dog::New(age, gender, name, bread, "").toJson();
 		context.sendJson(http::HttpStatus::OK,ret);
 	}
 	catch (const std::invalid_argument& e) {
@@ -31,7 +30,8 @@ void getDogHandlerFunc(http::HttpContext& context)
 {
 	try
 	{
-		auto ret = Dog::GetById(std::stoi(context.GetParam("id"))).toJson();
+		int id = std::stoi(context.GetParam("id"));
+		auto ret = Dog::GetById(id).toJson();
 		context.sendJson(http::HttpStatus::OK, ret);
 	}
 	catch (const std::exception& e)
