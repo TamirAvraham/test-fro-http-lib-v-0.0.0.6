@@ -64,7 +64,7 @@ namespace http {
 		};
 
 	private:
-		void ConnHandler();
+		void ConnHandler(SOCKET sock);
 		std::pair<http::HttpServer::HttpContext, std::function<void(http::HttpServer::HttpContext&)>> getContextFromReq(std::string req, SOCKET sock);
 		std::pair<bool,std::vector<HttpRouteParam>> getParamsFromRoute(std::string route, std::string templateRoute)const;
 		std::pair<std::vector<HttpRouteParam>,std::function<void(HttpServer::HttpContext&)>> matchRoute(std::string gotRoute, http::HttpRequestType reqType);

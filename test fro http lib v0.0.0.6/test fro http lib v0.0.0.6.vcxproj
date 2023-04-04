@@ -172,6 +172,8 @@
     <None Include="add_dog.html" />
     <None Include="add_dog.js" />
     <None Include="dog_details.html" />
+    <None Include="Error400.html" />
+    <None Include="Error404.html" />
     <None Include="home_page.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
