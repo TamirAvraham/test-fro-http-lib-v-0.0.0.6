@@ -176,3 +176,33 @@ std::vector<Dog> Dog::getAllDogs()
 
    return ret;
 }
+
+bool Dog::DeleteDogById(int id)
+{
+    try
+    {
+        std::string query = "delete from dogs where id=";
+        query += std::to_string(id);
+        query += ';';
+        sqlite3* db = nullptr;
+       int res = sqlite3_open(DB_NAME, &db);
+       if (res)
+       {
+           std::cerr << "cant open db";
+           exit(1);
+       }
+
+       res = sqlite3_exec(db, query.c_str(), nullptr, nullptr, nullptr);
+       if (res)
+       {
+           std::cerr << "cant delete dog: " << sqlite3_errmsg(db);
+           throw res;
+       }
+       sqlite3_close(db);
+       return true;
+    }
+    catch (...)
+    {
+        return false;
+    }
+}

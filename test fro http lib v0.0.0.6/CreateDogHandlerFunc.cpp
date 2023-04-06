@@ -63,3 +63,29 @@ void getAllDogsHandlerFunc(http::HttpContext& context)
 		context.sendJson(http::HttpStatus::InternalServerError, ret);
 	}
 }
+
+void adoptDog(http::HttpContext& context)
+{
+	http::json::JsonObject ret;
+	try
+	{
+		int id = std::stoi(context.GetParam("id"));
+		bool worked = Dog::DeleteDogById(id);
+		if (worked)
+		{
+			ret.insert({ "success",{"dog adopted successfly"} });
+		}
+		else
+		{
+			throw std::exception("error: cant adopt dog");
+
+		}
+		context.sendJson(http::HttpStatus::OK, ret);
+	}
+	catch (const std::exception& e)
+	{
+		
+		ret.insert({ "error",{e.what()} });
+		context.sendJson(http::HttpStatus::InternalServerError, ret);
+	}
+}

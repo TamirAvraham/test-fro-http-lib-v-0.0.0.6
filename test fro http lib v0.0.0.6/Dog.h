@@ -19,5 +19,6 @@ public:
 	static Dog New(int age, char gender, const std::string& name, const std::string& bread, const std::string& pathToPhoto);
 	static Dog GetById(int id);
 	static std::vector<Dog> getAllDogs();
+	static bool DeleteDogById(int id);
 };
 
