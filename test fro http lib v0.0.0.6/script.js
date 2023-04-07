@@ -47,7 +47,9 @@ fetch(`http://localhost:8080/api/get_dog/${dogId}`)
     });
 const submitButton = document.getElementById("adopt_button");
 submitButton.onclick = (mouseEvent) => {
-    fetch(`http://localhost:8080/api/adopt_dog/${dogId}`).then(response => {
+    fetch(`http://localhost:8080/api/adopt_dog/${dogId}`, {
+        method:"DELETE"
+    }).then(response => {
         const dogName = document.getElementById('dog-name').innerText;
         if (response.ok) {
             alert(`${dogName} adopted successfuly`);

@@ -43,7 +43,7 @@ int main() {
 	server.HandleRoute(http::HttpPOST, createDogRoute);
 	server.HandleRoute(http::HttpGET, getDogRoute);
 	server.HandleRoute(http::HttpGET, getAllDogsRoute);
-	server.HandleRoute(http::HttpGET, adpotDogRoute);
+	server.HandleRoute(http::HttpDELETE, adpotDogRoute);
 	server.ServeHtmlPage("/", homePageReader);
 	server.ServeHtmlPage("/dog_details/:id", dogDeatsReader);
 	server.ServeHtmlPage("/add_dog", addDogReader);
